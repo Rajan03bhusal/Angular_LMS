@@ -1,0 +1,119 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add New User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form></form>
+    <mat-grid-list cols="2" rowHeight="100px" gutterSize="10px">
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Name"
+            name="name"
+            [(ngModel)]="formObject.name"
+            required
+          />
+          <mat-error *ngIf="!formObject.name">Name is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>Email Address</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            name="emailAddress"
+            [(ngModel)]="formObject.emailAddress"
+            required
+          />
+          <mat-error *ngIf="!formObject.emailAddress"
+            >Email is required.</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>Phone</mat-label>
+          <input
+            matInput
+            placeholder="Phone"
+            name="phone"
+            [(ngModel)]="formObject.phone"
+            required
+          />
+          <mat-error *ngIf="!formObject.phone">Phone is required.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>UserName</mat-label>
+          <input
+            matInput
+            placeholder="UserName"
+            name="userName"
+            [(ngModel)]="formObject.userName"
+            required
+          />
+          <mat-error *ngIf="!formObject.userName"
+            >UserName is required.</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="formObject.password"
+            required
+          />
+          <mat-error *ngIf="!formObject.password"
+            >Password is required.</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field color="accent">
+          <mat-label>UserType</mat-label>
+          <input
+            matInput
+            placeholder="UserType"
+            name="userType"
+            value="Regular_user"
+            readonly
+          />
+          <mat-error *ngIf="!formObject.userType"
+            >UserType is required.</mat-error
+          >
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <a
+      mat-raised-button
+      color="accent"
+      (click)="Save()"
+      [disabled]="
+        !formObject.name ||
+        !formObject.emailAddress ||
+        !formObject.phone ||
+        !formObject.userName ||
+        !formObject.password ||
+        !formObject.userType
+      "
+      >Save</a
+    >
+    <a mat-stroked-button color="accent" [mat-dialog-close]>Close</a>
+  </mat-card-actions>
+</mat-card>

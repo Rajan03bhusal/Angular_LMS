@@ -1,0 +1,16 @@
+.return-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+}

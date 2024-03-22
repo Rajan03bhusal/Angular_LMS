@@ -1,0 +1,31 @@
+<form class="return-form">
+  <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <mat-select [(ngModel)]="userId" name="userId">
+      <mat-option *ngFor="let user of userList" [value]="user.userId">
+        {{ user.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Book Id"
+      [(ngModel)]="bookId"
+      name="bookId"
+      readonly
+    />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    class="btn"
+    [disabled]="!userId"
+    (click)="Save()"
+  >
+    Issue Book
+  </button>
+  <button mat-raised-button [mat-dialog-close] color="accent" class="btn">
+    Close
+  </button>
+</form>

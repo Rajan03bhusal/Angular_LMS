@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <button
+    mat-button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    aria-label="Menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>LMS</span>
+  <span class="example-spacer"></span>
+  <button mat-button class="btn" (click)="Delete()">Logout</button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list role="list">
+      <a
+        mat-list-item
+        *ngFor="let item of navigationList"
+        [routerLink]="'/user/' + item.url"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.name }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

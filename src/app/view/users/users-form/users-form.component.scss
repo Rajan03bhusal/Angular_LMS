@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  width: 400px;
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-card-title {
+      font-size: 2rem;
+      color: #333;
+    }
+  }
+
+  mat-form-field {
+    width: 80%;
+    margin-bottom: 1.5rem;
+  }
+
+  mat-card-actions {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 80%;
+    }
+
+    a {
+      margin-top: 0.5rem;
+      text-decoration: none;
+    }
+  }
+}

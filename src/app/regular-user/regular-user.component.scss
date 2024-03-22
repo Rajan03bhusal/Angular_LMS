@@ -1,0 +1,68 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  height: 100vh;
+}
+
+.example-sidenav {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.example-sidenav a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.example-sidenav .mat-icon {
+  margin-right: 8px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #b5060054;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #bb1212a0;
+}
+.example-card {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: white;
+}
+
+.welcome-container {
+  text-align: center;
+  margin-top: 50px;
+  color: black;
+}
+
+.box {
+  height: 100%;
+}
+.welcome-message {
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 10px;
+  padding: 20px;
+  animation: slideIn 1s ease forwards;
+  justify-content: center;
+  text-align: center;
+}

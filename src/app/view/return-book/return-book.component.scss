@@ -1,0 +1,19 @@
+.fine {
+  margin-left: 50px;
+}
+.return-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}

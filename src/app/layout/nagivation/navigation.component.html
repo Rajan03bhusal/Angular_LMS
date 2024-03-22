@@ -1,0 +1,109 @@
+<mat-toolbar color="primary">
+  <button
+    mat-button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    aria-label="Menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>LMS</span>
+  <span class="example-spacer"></span>
+  <button mat-button class="btn" (click)="Delete()">Logout</button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list role="list">
+      <a
+        mat-list-item
+        *ngFor="let item of navigationList"
+        [routerLink]="'/admin/' + item.url"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.name }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div
+    class="box"
+    *ngIf="
+      !isBookRoute() &&
+      !isUsersRoute() &&
+      !isMemberRoute() &&
+      !isIssueBookRoute() &&
+      !isViewOrderRoute() &&
+      !isViewMemberShipRoute() &&
+      !isInvoiceRoute()
+    "
+  >
+    <!-- Date pickers -->
+    <mat-form-field class="datePicker">
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        placeholder="Start Date"
+        [(ngModel)]="startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        placeholder="End Date"
+        [(ngModel)]="endDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+    <button
+      class="filterBtn"
+      mat-raised-button
+      color="accent"
+      (click)="filterByDate()"
+    >
+      Filter
+    </button>
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Total Book Listed</mat-card-title>
+          <mat-card-content>{{ totalBook }}</mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Total Book Issued </mat-card-title>
+          <mat-card-content>{{ totalIssuedBook }}</mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Total Registered Users</mat-card-title>
+          <mat-card-content>{{ totalUser }}</mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Payment Made</mat-card-title>
+          <mat-card-content>Rs{{ totalRevenue }}</mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <!-- Add other card details here -->
+    </mat-grid-list>
+  </div>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

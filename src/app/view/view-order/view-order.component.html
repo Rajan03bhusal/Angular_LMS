@@ -1,0 +1,99 @@
+<a class="url">{{ currentUrl }}</a>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Not Returned Books </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field class="searchBtn">
+      <input
+        matInput
+        type="search"
+        (keypress)="filterChange($event, dataSourceForNotReturnedBook)"
+        placeholder="Search"
+      />
+      <button mat-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <table
+      class="table-container"
+      mat-table
+      [dataSource]="dataSourceForNotReturnedBook"
+      class="mat-elevation-z8"
+    >
+      <ng-container
+        *ngFor="let column of displayedColumns"
+        [matColumnDef]="column"
+      >
+        <th mat-header-cell *matHeaderCellDef>{{ column.toUpperCase() }}</th>
+
+        <td mat-cell *matCellDef="let element; let j = index">
+          <ng-container *ngIf="column.toLowerCase() == 'action'">
+            <button
+              mat-stroked-button
+              color="primary"
+              class="action-button"
+              (click)="Edit(element)"
+            >
+              Return This Book
+            </button>
+          </ng-container>
+          {{ element[column] }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      #NotReturned="matPaginator"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Returned Books </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field class="searchBtn">
+      <input matInput type="search" placeholder="Search" />
+      <button mat-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <table
+      class="table-container"
+      mat-table
+      [dataSource]="dataSourceForReturnedBook"
+      class="mat-elevation-z8"
+    >
+      <ng-container
+        *ngFor="let column of displayedColumns"
+        [matColumnDef]="column"
+      >
+        <th mat-header-cell *matHeaderCellDef>{{ column.toUpperCase() }}</th>
+
+        <td mat-cell *matCellDef="let element; let j = index">
+          <ng-container *ngIf="column.toLowerCase() == 'action'">
+            <button mat-icon-button color="warn" class="action-button">
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+          </ng-container>
+          {{ element[column] }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      #ReturnedBook="matPaginator"
+      [length]="66"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<router-outlet></router-outlet>

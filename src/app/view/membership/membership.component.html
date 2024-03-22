@@ -1,0 +1,101 @@
+<mat-card class="custom-card">
+  <mat-stepper [linear]="isLinear" class="custom-stepper">
+    <mat-step>
+      <form [formGroup]="form" class="custom-form">
+        <ng-template matStepLabel>Fill User Details</ng-template>
+        <mat-form-field>
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="name" required />
+          <mat-error *ngIf="form.get('name')?.hasError('required')"
+            >Name is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="emailAddress" required />
+          <mat-error *ngIf="form.get('emailAddress')?.hasError('required')"
+            >Email is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required />
+          <mat-error *ngIf="form.get('password')?.hasError('required')"
+            >Password is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="userName" required />
+          <mat-error *ngIf="form.get('userName')?.hasError('required')"
+            >Username is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone" required />
+          <mat-error *ngIf="form.get('phone')?.hasError('required')"
+            >Phone number is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" mat-button matStepperNext>
+            Next
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    <mat-step label="Choose Membership">
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Membership Type</mat-label>
+          <mat-select
+            formControlName="membershipId"
+            (selectionChange)="updateFee()"
+          >
+            <mat-option
+              *ngFor="let membership of memberShipList"
+              [value]="membership.membershipId"
+            >
+              {{ membership.listItems }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Membership Fee</mat-label>
+            <input matInput formControlName="amount" readonly />
+          </mat-form-field>
+        </div>
+        <mat-form-field>
+          <mat-label>Late Return Charge</mat-label>
+          <input matInput formControlName="lateReturnCharge" readonly />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Max Borrow</mat-label>
+          <input matInput formControlName="maxBorrow" readonly />
+        </mat-form-field>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            mat-button
+            [disabled]="!form.valid"
+            (click)="save()"
+          >
+            Submit
+          </button>
+          <button mat-button matStepperPrevious color="accent">Back</button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</mat-card>

@@ -1,0 +1,39 @@
+<div *ngIf="isFineClicked" class="fine">
+  <p>Day Difference :{{ dayDiff | number }}</p>
+  <p>Late Return Charge: {{ lateReturnCharge | currency : "Rs" }}</p>
+  <p>Fine to be paid : {{ actualCharge | currency : "Rs" }}</p>
+</div>
+<form class="return-form" [formGroup]="returnForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput formControlName="userId" placeholder="User ID" readonly />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="bookId" placeholder="Book ID" readonly />
+  </mat-form-field>
+  <div class="btn">
+    <button mat-raised-button color="primary" class="btn" (click)="Findfine()">
+      Fine
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="btn"
+      [disabled]="!isFineClicked"
+      (click)="ReturnBook()"
+    >
+      Return Book
+    </button>
+
+    <!-- Close button remains unchanged -->
+    <button
+      mat-raised-button
+      [mat-dialog-close]
+      color="accent"
+      type="submit"
+      class="btn"
+    >
+      Close
+    </button>
+  </div>
+</form>

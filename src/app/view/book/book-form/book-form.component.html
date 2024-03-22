@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add New Book</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-form-field color="accent">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Title"
+        name="title"
+        [(ngModel)]="formObject.title"
+        required
+      />
+      <mat-error *ngIf="!formObject.title">Title is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Author</mat-label>
+      <input
+        matInput
+        placeholder="Author"
+        name="author"
+        [(ngModel)]="formObject.author"
+        required
+      />
+      <mat-error *ngIf="!formObject.author">Author is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Genre</mat-label>
+      <input
+        matInput
+        placeholder="Genre"
+        name="genre"
+        [(ngModel)]="formObject.genre"
+        required
+      />
+      <mat-error *ngIf="!formObject.genre">Genre is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Quantity</mat-label>
+      <input
+        matInput
+        placeholder="Quantity"
+        name="quantity"
+        [(ngModel)]="formObject.quantity"
+        required
+      />
+      <mat-error *ngIf="!formObject.quantity">Quantity is required.</mat-error>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-stroked-button color="accent" [mat-dialog-close]>Close</a>
+
+    <a
+      mat-raised-button
+      color="accent"
+      (click)="Save()"
+      [disabled]="
+        !formObject.title ||
+        !formObject.author ||
+        !formObject.genre ||
+        !formObject.quantity
+      "
+      >Save</a
+    >
+  </mat-card-actions>
+</mat-card>

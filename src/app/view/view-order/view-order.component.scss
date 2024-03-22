@@ -1,0 +1,47 @@
+.url {
+  margin-top: auto;
+  margin-left: 50px;
+}
+.searchBtn {
+  width: 30%;
+  margin-left: 500px;
+  margin-top: 0px;
+}
+.mat-accordion {
+  margin-top: 20px;
+}
+
+.mat-expansion-panel {
+  overflow: hidden;
+}
+
+.table-container {
+  overflow: hidden;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mat-elevation-z8 th.mat-header-cell,
+.mat-elevation-z8 td.mat-cell {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.mat-elevation-z8 th.mat-header-cell {
+  background-color: #f2f2f2;
+}
+
+.mat-elevation-z8 td.mat-cell {
+  border-bottom: 1px solid #ddd;
+}
+
+.book {
+  margin: 10px;
+}
